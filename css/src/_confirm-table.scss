@@ -1,0 +1,22 @@
+.confirm-table {
+  width: 100%;
+  max-width: 50rem;
+  margin: 2rem 0;
+  color: $black;
+  vertical-align: top;
+  border-color: $gray;
+  &__head-row {
+    border-bottom: solid 2px $black;
+  }
+  &__body-row {
+    border-bottom: solid 1px $gray;
+  }
+  &__head-ttl,
+  &__body-ttl,
+  &__txt {
+    padding: 0.5rem;
+  }
+  &__head-ttl {
+    font-size: 1.4rem;
+  }
+}

@@ -7,6 +7,7 @@ class Model
     public $value;
     public $values;
 
+
     function __construct()
     {
         $db_connection = DB_CONNECTION;

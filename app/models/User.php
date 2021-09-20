@@ -33,7 +33,7 @@ class User extends Model
             $errors['new_password'] = '新しいパスワードを入力してください。';
         } else if (empty($data['new_password_2'])) {
             $errors['new_password'] = '新しいパスワード（確認用）を入力してください。';
-        } else if ($data['new_password']) {
+        } else if ($data['new_password'] !== $data['new_password_2']) {
             $errors['new_password'] = 'パスワードが一致していません。';
         }
         return $errors;
@@ -74,7 +74,7 @@ class User extends Model
     }
 
     public function update($data)
-    {
+    {   
         foreach (array_keys($data) as $column) {
             if ($column != 'id') $columns[] = "{$column} = :{$column}";
         }

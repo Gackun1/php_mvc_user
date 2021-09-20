@@ -21,7 +21,7 @@ class UserController
     public function logout()
     {
         Session::clear('auth_user');
-        header('Location: ../login/');
+        header('Location: ../');
     }
 
     public function edit()
@@ -44,7 +44,7 @@ class UserController
                 if ($user->update($posts)) {
                     //セッション再登録
                     $user->saveAuth($this->auth_user['id']);
-                    header('Location: edit.php');
+                    header('Location: result.php');
                 }
             }
         }
@@ -62,14 +62,21 @@ class UserController
             $user = new User();
             $errors = $user->validatePassword($_POST);
             if (empty($errors)) {
-                $posts = $this->auth_user;
+                $posts = $this->auth_user; 
                 $posts['password'] = password_hash($_POST['new_password'], PASSWORD_BCRYPT);
-                if ($user->update($this->auth_user['id'], $posts)) {
+                if ($user->update($posts)) {
                     //セッション再登録
                     $user->saveAuth($this->auth_user['id']);
+                    header('Location: result.php');
                 }
             }
         }
+    }
+
+    public function result()
+    {
+        $template = 'app/views/user/result.view.php';
+        include 'app/views/layouts/user.view.php';
     }
 
 }

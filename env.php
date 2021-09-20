@@ -9,4 +9,4 @@ define('DB_DATABASE', 'my_shop');
 
 //URL_BASE
 //パスを環境にあわせる
-define('BASE_URL', '/my_shop/');
+define('BASE_URL', '/kadai05/');

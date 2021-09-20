@@ -15,10 +15,13 @@ class LoginController
             $user = new User();
             $posts = $user->check($_POST);
             if ($user->auth($posts['email'], $posts['password'])) {
-                Session::save('auth_user', $user->value);
+                $user_data = $user->findByEmail($posts['email']);
+                Session::save('auth_user', $user_data);
                 header('Location: ../user/');
+                exit;
             } else {
                 header('Location: index.php');
+                exit;
             }
         }
     }

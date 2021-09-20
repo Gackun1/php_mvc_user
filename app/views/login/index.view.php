@@ -3,15 +3,16 @@
         <div class="w-50 mt-3 p-5 bg-light">
             <form action="auth.php" method="post">
                 <h3 class="h3 mb-3 fw-normal">Sign In</h3>
-                <div class="form-floating">
+                <div class="form-floating mb-2">
                     <input type="text" name="email" class="form-control" id="input">
                     <label for="input">Email</label>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating mb-2">
                     <input type="password" name="password" class="form-control" id="password">
                     <label for="password">パスワード</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary">Sign In</button>
+                <button class="w-100 btn btn-lg btn-primary mb-4">Sign In</button>
+                <a href="../regist/" class="w-100 btn fw-bold text-primary bg-white border border-primary">会員登録</a>
             </form>
         </div>
     </main>

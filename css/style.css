@@ -1,0 +1,44 @@
+.confirm-table {
+  width: 100%;
+  max-width: 50rem;
+  margin: 2rem 0;
+  color: #212529;
+  vertical-align: top;
+  border-color: #dee2e6;
+}
+
+.confirm-table__head-row {
+  border-bottom: solid 2px #212529;
+}
+
+.confirm-table__body-row {
+  border-bottom: solid 1px #dee2e6;
+}
+
+.confirm-table__head-ttl, .confirm-table__body-ttl, .confirm-table__txt {
+  padding: 0.5rem;
+}
+
+.confirm-table__head-ttl {
+  font-size: 1.4rem;
+}
+
+.button-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.button-box__item {
+  display: block;
+}
+
+.button-box__item + .button-box__item {
+  margin: 0 0 0 1rem;
+}
+/*# sourceMappingURL=style.css.map */

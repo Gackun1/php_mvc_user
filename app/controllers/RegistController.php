@@ -18,7 +18,6 @@ class RegistController
         include 'app/views/layouts/app.view.php';
     }
 
-    //演習：確認画面
     public function confirm()
     {
         $user = new User();
@@ -42,31 +41,22 @@ class RegistController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = new User();
-            $user->value = Session::load('member');
-            $posts = $user->value;
-            if ($user->insert($posts)) {
-                header('Location: result.php');
-                exit;
+            $posts = $user->check($_POST);
+            $errors = $user->validate($posts);
+            if ($user->findByEmail($posts['email'])) {
+                $errors['email'] = '既に登録されています。';
             }
-            header('Location: confirm.php');
+            Session::save('member', $posts);
+            Session::save('errors', $errors);
+            if (!$errors) {
+                if ($user->insert($posts)) {
+                    header('Location: result.php');
+                    exit;
+                }
+            }
+            header('Location: index.php');
         }
-        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //     $user = new User();
-        //     $posts = $user->check($_POST);
-        //     $errors = $user->validate($posts);
-        //     if ($user->findByEmail($posts['email'])) {
-        //         $errors['email'] = '既に登録されています。';
-        //     }
-        //     Session::save('member', $posts);
-        //     Session::save('errors', $errors);
-        //     if (!$errors) {
-        //         if ($user->insert($posts)) {
-        //             header('Location: result.php');
-        //             exit;
-        //         }
-        //     }
-        //     header('Location: index.php');
-        // }
+
     }
 
     //完了画面

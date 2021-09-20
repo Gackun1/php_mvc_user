@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="h2">会員登録</h2>
-    <form action="add.php" method="post">
+    <form action="confirm.php" method="post">
         <div class="form-floating">
             <input type="text" class="form-control" name="name" value="<?= @$user->value['name'] ?>">
             <label for="">氏名</label>
