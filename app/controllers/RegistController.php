@@ -39,22 +39,18 @@ class RegistController
 
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $user = new User();
-            $posts = $user->check($_POST);
-            $errors = $user->validate($posts);
-            if ($user->findByEmail($posts['email'])) {
-                $errors['email'] = '既に登録されています。';
-            }
-            Session::save('member', $posts);
-            Session::save('errors', $errors);
-            if (!$errors && ($user->insert($posts))) {
-                header('Location: result.php');
-                exit;
-            }
+        if (Session::load('member') || $_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: index.php');
+            exit;
         }
-
+        $user = new User();
+        $posts = Session::load('member');
+        
+        if (!$errors && ($user->insert($posts))) {
+            header('Location: result.php');
+            exit;
+        }
+        header('Location: index.php');
     }
 
     public function result()
