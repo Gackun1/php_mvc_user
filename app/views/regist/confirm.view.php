@@ -27,6 +27,10 @@
     </table>
     <p>この内容で登録しますか？</p>
     <form action="add.php" method="post">
+        <input type="hidden" class="form-control" name="name" value="<?= @$user->value['name'] ?>">
+        <input type="hidden" class="form-control" name="email" value="<?= @$user->value['email'] ?>">
+        <input type="hidden" class="form-control" name="password" value="<?= @$user->value['password'] ?>">
+        <input type="hidden" class="form-control" name="gender" value="<?= @$user->value['gender'] ?>">
         <div class="button-box">
             <button class="button-box__item btn btn-primary">登録</button>
             <a href="index.php" class="button-box__item btn fw-bold text-primary bg-white border border-primary">修正</a>
