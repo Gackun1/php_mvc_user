@@ -39,7 +39,7 @@ class RegistController
 
     public function add()
     {
-        if (Session::load('member') || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+        if (Session::load('member') != true || $_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: index.php');
             exit;
         }
