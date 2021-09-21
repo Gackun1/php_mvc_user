@@ -48,21 +48,21 @@ class RegistController
             }
             Session::save('member', $posts);
             Session::save('errors', $errors);
-            if (!$errors) {
-                if ($user->insert($posts)) {
-                    header('Location: result.php');
-                    exit;
-                }
+            if (!$errors && ($user->insert($posts))) {
+                header('Location: result.php');
+                exit;
             }
             header('Location: index.php');
         }
 
     }
 
-    //完了画面
     public function result()
     {
-        if (isset($_SESSION['member'])) {
+        if (Session::load('errors')) {
+            Session::clear('errors');
+        }
+        if (Session::load('member')) {
             Session::clear('member');
         } else {
             header('Location: index.php');

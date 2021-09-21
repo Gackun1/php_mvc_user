@@ -1,4 +1,3 @@
-<?php require_once 'helpers/Session.php'; $Session = new Session();?>
 <header class="navbar navbar-expand bg-light">
     <nav class="container-fluid flex-wrap">
         <div class="navbar-collapse">
